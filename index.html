@@ -113,28 +113,14 @@
   });
 
   yesBtn.addEventListener("click", () => {
-    yesBtn.addEventListener("click", () => {
-  document.body.innerHTML = `
-    <div style="
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      background:linear-gradient(to bottom right, #ff69b4, #ff1493);
-      text-align:center;
-      color:white;
-    ">
-      <h1 style="font-size:3rem;">💖 It’s a Date! 💖</h1>
-      <h2 style="font-size:2rem;">See you at 6:30pm</h2>
-      <h2 style="font-size:2rem;">Hai Di Lao</h2>
-      <h2 style="font-size:2rem;">14 Feb 2023 💕</h2>
-      <p style="margin-top:20px; font-size:1.2rem;">I’ll be waiting 😌✨</p>
-    </div>
-  `;
-});
+    document.body.innerHTML = `
+      <h1 style="color:white; font-size:3rem; padding:20px;">
+        I KNEW YOU’D SAY YES 💕💍
+      </h1>
+    `;
     createHearts();
   });
+
 
   function createHearts() {
     for (let i = 0; i < 40; i++) {
