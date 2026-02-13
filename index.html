@@ -74,45 +74,79 @@
   </div>
 
   <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
 
-    let yesScale = 1;
+  let yesScale = 1;
+  let attemptCount = 0;
 
-    noBtn.addEventListener("mouseover", () => {
-      // Switch to absolute only when hovered
-      noBtn.style.position = "absolute"; 
-      
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  const messages = [
+    "Yes 💘",
+    "Are you sure? 🥺",
+    "Really sure?? 😭",
+    "Pleaseee? 💕",
+    "Don’t break my heart 💔",
+    "Just press it already 😤",
+    "You know you want to 😏",
+    "SAY YESSSS 💖",
+    "JUST CLICK IT 😭💖"
+  ];
 
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
+  noBtn.addEventListener("mouseover", () => {
 
-      yesScale += 0.2;
-      yesBtn.style.transform = `scale(${yesScale})`;
-    });
+    // Make No run away
+    noBtn.style.position = "absolute";
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 
-    yesBtn.addEventListener("click", () => {
-      document.body.innerHTML = `
-        <h1 style="color:white; font-size:3rem; padding: 20px;">
-          YAYYYYY 💕 I knew you'd say YES!!
-        </h1>
-      `;
-      createHearts();
-    });
+    // Grow Yes button
+    yesScale += 0.25;
+    yesBtn.style.transform = `scale(${yesScale})`;
 
-    function createHearts() {
-      for (let i = 0; i < 40; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = Math.random() * window.innerHeight + "px";
-        document.body.appendChild(heart);
-      }
+    // Change Yes text
+    if (attemptCount < messages.length - 1) {
+      attemptCount++;
+      yesBtn.textContent = messages[attemptCount];
     }
-  </script>
+  });
+
+  yesBtn.addEventListener("click", () => {
+    yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:linear-gradient(to bottom right, #ff69b4, #ff1493);
+      text-align:center;
+      color:white;
+    ">
+      <h1 style="font-size:3rem;">💖 It’s a Date! 💖</h1>
+      <h2 style="font-size:2rem;">See you at 6:30pm</h2>
+      <h2 style="font-size:2rem;">Hai Di Lao</h2>
+      <h2 style="font-size:2rem;">14 Feb 2023 💕</h2>
+      <p style="margin-top:20px; font-size:1.2rem;">I’ll be waiting 😌✨</p>
+    </div>
+  `;
+});
+    createHearts();
+  });
+
+  function createHearts() {
+    for (let i = 0; i < 40; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(heart);
+    }
+  }
+</script>
 
 </body>
 </html>
